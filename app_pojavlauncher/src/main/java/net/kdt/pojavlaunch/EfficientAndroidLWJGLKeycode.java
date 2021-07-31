@@ -13,12 +13,13 @@ public class EfficientAndroidLWJGLKeycode {
     //This old version of this class was using an ArrayMap, a generic Key -> Value data structure.
     //The key being the android keycode from a KeyEvent
     //The value its LWJGL equivalent.
-    private static final int KEYCODE_COUNT = 102;
+    private static final int KEYCODE_COUNT = 103;
     private static final int[] androidKeycodes = new int[KEYCODE_COUNT];
     private static final short[] LWJGLKeycodes = new short[KEYCODE_COUNT];
     private static String[] androidKeyNameArray; /* = new String[androidKeycodes.length]; */
 
     static {
+
         /*  BINARY SEARCH IS PERFORMED ON THE androidKeycodes ARRAY !
             WHEN ADDING A MAPPING, ADD IT SO THE androidKeycodes ARRAY STAYS SORTED ! */
         // Mapping Android Keycodes to LWJGL Keycodes
@@ -77,6 +78,7 @@ public class EfficientAndroidLWJGLKeycode {
 
 
         add(KeyEvent.KEYCODE_COMMA, LWJGLGLFWKeycode.GLFW_KEY_COMMA);
+        add(KeyEvent.KEYCODE_PERIOD, LWJGLGLFWKeycode.GLFW_KEY_PERIOD);
 
         // Alt keys
         add(KeyEvent.KEYCODE_ALT_LEFT, LWJGLGLFWKeycode.GLFW_KEY_LEFT_ALT);
@@ -194,17 +196,14 @@ public class EfficientAndroidLWJGLKeycode {
 
         try {
             System.out.println(keyEvent.getKeyCode() + " " +keyEvent.getDisplayLabel());
-            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_BACK && LauncherPreferences.PREF_BACK_TO_RIGHT_MOUSE) {
-                BaseMainActivity.sendMouseButton(LWJGLGLFWKeycode.GLFW_MOUSE_BUTTON_RIGHT, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
-            } else {
-                char key = (char)(keyEvent.getUnicodeChar() != 0 ? keyEvent.getUnicodeChar() : '\u0000');
-                BaseMainActivity.sendKeyPress(
-                        getValueByIndex(valueIndex),
-                        key,
-                        0,
-                        CallbackBridge.getCurrentMods(),
-                        keyEvent.getAction() == KeyEvent.ACTION_DOWN);
-            }
+            char key = (char)(keyEvent.getUnicodeChar() != 0 ? keyEvent.getUnicodeChar() : '\u0000');
+            BaseMainActivity.sendKeyPress(
+                    getValueByIndex(valueIndex),
+                    key,
+                    0,
+                    CallbackBridge.getCurrentMods(),
+                    keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+
         } catch (Throwable th) {
             th.printStackTrace();
         }

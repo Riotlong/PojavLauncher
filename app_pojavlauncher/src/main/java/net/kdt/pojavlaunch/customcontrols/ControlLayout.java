@@ -176,6 +176,10 @@ public class ControlLayout extends FrameLayout
 	}
 
 	public void removeControlDrawer(ControlDrawer controlDrawer){
+		for(ControlSubButton subButton : controlDrawer.buttons){
+			subButton.setVisibility(GONE);
+			removeView(subButton);
+		}
 		mLayout.mDrawerDataList.remove(controlDrawer.getDrawerData());
 		controlDrawer.setVisibility(GONE);
 		removeView(controlDrawer);
@@ -187,8 +191,11 @@ public class ControlLayout extends FrameLayout
 		subButton.parentDrawer.drawerData.buttonProperties.remove(subButton.getProperties());
 		subButton.parentDrawer.buttons.remove(subButton);
 
+		subButton.parentDrawer.syncButtons();
+
 		subButton.setVisibility(GONE);
 		removeView(subButton);
+
 	}
 
 	public void saveLayout(String path) throws Exception {
