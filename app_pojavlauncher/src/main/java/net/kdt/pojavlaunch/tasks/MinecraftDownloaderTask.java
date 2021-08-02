@@ -2,7 +2,6 @@ package net.kdt.pojavlaunch.tasks;
 
 import android.app.*;
 import android.content.*;
-import android.content.res.AssetManager;
 import android.graphics.*;
 import android.os.*;
 import android.util.*;
