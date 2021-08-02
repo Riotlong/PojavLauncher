@@ -108,12 +108,12 @@
     <string name="mcl_setting_veroption_snapshot">Snapshot</string>
     <string name="mcl_setting_veroption_oldalpha">Old-alpha</string>
     <string name="mcl_setting_veroption_oldbeta">Old-beta</string>
-    
     <string name="mcl_version_clone">Clone</string>
 
     <!-- Global strings -->
     <string name="global_edit">Edit</string>
     <string name="global_error">Error</string>
+    <string name="global_warinng">Warning</string>
     <string name="global_load">Load</string>
     <string name="global_name">Name</string>
     <string name="global_remove">Remove</string>
