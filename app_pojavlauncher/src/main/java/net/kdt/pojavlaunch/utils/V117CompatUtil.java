@@ -79,6 +79,10 @@ public class V117CompatUtil {
     }
      */
     private static List<String> getTexturePackList(String param) {
+        if (param == null) {
+            Log.i("V117CompatDebug","null, defaulting to empty");
+            return new ArrayList<>();
+        }
         Log.i("V117CompatDebug",param);
         if("[]".equals(param)) return new ArrayList<>();
         Log.i("V117CompatDebug","ph2");
