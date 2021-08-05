@@ -69,7 +69,7 @@ jobs:
       if: steps.vgpu-cache.outputs.cache-hit != 'true'
       continue-on-error: true
       run: |
-        cd gl4es
+        cd vgpu
         git config --global user.email "github-actions@users.noreply.github.com"
         git config --global user.name "github-actions"
         git remote add upstream https://github.com/luo9674/VGPU
@@ -82,7 +82,7 @@ jobs:
       if: steps.vgpu-cache.outputs.cache-hit != 'true'
       run: |
         cp -R VGPU/libs/* app_pojavlauncher/src/main/jniLibs/
-        mv VGPU ..
+        mv vgpu ..
         git add .
         git commit -am "CI: Update gl4es"
         git push
