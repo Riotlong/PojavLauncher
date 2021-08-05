@@ -88,7 +88,7 @@ jobs:
     - name: Install vgpu
       if: steps.vgpu-cache.outputs.cache-hit != 'true'
       run: |
-        cp -R VGPU/libs/* app_pojavlauncher/src/main/jniLibs/
+        cp -R vgpu/libs/* app_pojavlauncher/src/main/jniLibs/
         mv vgpu ..
         git add .
         git commit -am "CI: Update vgpu"
