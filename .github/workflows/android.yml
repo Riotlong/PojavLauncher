@@ -66,7 +66,7 @@ jobs:
         git push
  
     - name: Get vgpu
-      if: steps.gl4es-cache.outputs.cache-hit != 'true'
+      if: steps.vgpu-cache.outputs.cache-hit != 'true'
       uses: actions/checkout@v2
       with:
         repository: 'luo9674/VGPU'
