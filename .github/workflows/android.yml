@@ -81,7 +81,7 @@ jobs:
     - name: Install vgpu
       if: steps.vgpu-cache.outputs.cache-hit != 'true'
       run: |
-        cp -R gl4es/libs/* app_pojavlauncher/src/main/jniLibs/
+        cp -R VGPU/libs/* app_pojavlauncher/src/main/jniLibs/
         mv VGPU ..
         git add .
         git commit -am "CI: Update gl4es"
