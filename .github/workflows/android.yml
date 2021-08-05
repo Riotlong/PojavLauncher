@@ -64,6 +64,13 @@ jobs:
         git add .
         git commit -am "CI: Update gl4es"
         git push
+ 
+    - name: Get vgpu
+      if: steps.gl4es-cache.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: 'luo9674/VGPU'
+        path: 'vgpu'
         
     - name: Build vgpu
       if: steps.vgpu-cache.outputs.cache-hit != 'true'
